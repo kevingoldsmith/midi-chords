@@ -4,6 +4,14 @@ chords = [
     {
         'name': 'major',
         'offsets': [0,4,7]
+    },
+    {
+        'name': 'minor',
+        'offsets': [0, 3, 7]
+    },
+    {
+        'name': 'dim',
+        'offsets': [0, 3, 9]
     }
 ]
 
@@ -30,6 +38,6 @@ for octave in range(0,5):
             for offset in chord['offsets']:
                 MyMIDI.addNote(track, channel, midi_note + offset, 0, duration, volume)
 
-            with open(f"{note} {octave} major-chord.mid", "wb") as output_file:
+            with open(f"{note} {octave} {chord['name']}.mid", "wb") as output_file:
                 MyMIDI.writeFile(output_file)
-            midi_note += 1
+        midi_note += 1
